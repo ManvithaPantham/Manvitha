@@ -1,13 +1,23 @@
- pipeline{
-   agent any
-   stage{
-    stage('Build and Test'){
-    steps{
-    echo 'Build and Test Successfull'
-    }}
-    stage('Generate Artifact'){
-    steps{
-    echo "hello"}}}
-    post{
-    success{
-      echo 'pipeline completed succesfully'}}}
+pipeline {
+    agent any
+
+    stages {                       // <-- This block was missing
+        stage('Build and Test') {
+            steps {
+                echo 'Build and Test Successful'
+            }
+        }
+
+        stage('Generate Artifact') {
+            steps {
+                echo 'hello'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully'
+        }
+    }
+}
